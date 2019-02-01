@@ -1,0 +1,35 @@
+{
+  "name": "nytscraper",
+  "version": "1.0.0",
+  "description": "A web scraper that pulls NYT articles to save and read later",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spinglez/nytScraper.git"
+  },
+  "keywords": [
+    "Scraper",
+    "Node.js",
+    "Mongo",
+    "MongoDb",
+    "Mongoose"
+  ],
+  "author": "Christian Cabrera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Spinglez/nytScraper/issues"
+  },
+  "homepage": "https://github.com/Spinglez/nytScraper#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.4.8",
+    "morgan": "^1.9.1"
+  }
+}
