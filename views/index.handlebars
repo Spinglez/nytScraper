@@ -1,1 +1,28 @@
-<h1>Testing Test</h1>
+<header>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-3 text-center">NYT Scraper</h1>
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+      <hr class="m-y-md">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </p>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  {{#each article}}
+  <div class="container">
+    <div class="row" id={{this.id}}>
+      <div class="col">
+        <a href={{this.link}} target="_blank"><h4>{{this.title}}</h4></a>
+        <div class="col">
+          <p>{{this.summary}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
