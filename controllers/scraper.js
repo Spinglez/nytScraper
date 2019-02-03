@@ -11,7 +11,7 @@ function scrape() {
 
              // With cheerio, find each p-tag with the "title" class
              // (i: iterator. element: the current element)
-             $("article").each(function (i, element) {
+             $("article").each((i, element) => {
 
                  let title = $(element).children().find("h2.esl82me2").text();
                  let summary = $(element).children().find("p.e1n8kpyg0").text();
@@ -35,6 +35,4 @@ function scrape() {
          });
 }
 
-scrape();
-
-module.exports = results;
+module.exports = scrape;

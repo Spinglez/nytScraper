@@ -15,12 +15,19 @@
 <div class="container">
   {{#each article}}
   <div class="container">
-    <div class="row" id={{this.id}}>
-      <div class="col">
+    <div class="row" id='articleId{{this.id}}'>
+      <div class="col" id='link-col' data-link="{{this.link}}">
         <a href={{this.link}} target="_blank"><h4>{{this.title}}</h4></a>
         <div class="col">
+          {{#if this.summary}}
           <p>{{this.summary}}</p>
+          {{else}}
+          <p>No available summary for article</p>
+          {{/if}}
         </div>
+      </div>
+      <div id="buttonDiv" class="col-1 mt-3 pb-2 mr-2">
+        <button id="saveButton" type="button" name="saveButton" data-id={{this.id}}>Save Article</button>
       </div>
     </div>
   </div>
