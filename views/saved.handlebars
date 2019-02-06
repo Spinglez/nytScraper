@@ -1,1 +1,37 @@
-<h2>I'm linked</h2>
+<header>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-3 text-center">Your History</h1>
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+      <hr class="m-y-md">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <p class="lead">
+        <a id="deleteButton" class="btn btn-warning btn-lg" role="button">Delete all your saved articles</a>
+        <a class="btn btn-primary btn-lg float-right" href="/">Back to articles</a>
+      </p>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  {{#each article}}
+  <div class="container">
+    <div class="row" id='articleId{{this._id}}'>
+      <div class="col" id='link-col' data-link="{{this.link}}">
+        <a href={{this.link}} target="_blank"><h4>{{this.title}}</h4></a>
+        <div class="col">
+          {{#if this.summary}}
+          <p>{{this.summary}}</p>
+          {{else}}
+          <p>No available summary for article</p>
+          {{/if}}
+        </div>
+      </div>
+      <div id="buttonDiv" class="col-1 mt-3 pb-2 mr-2">
+        <button id="addNote" type="button" name="Add a Note" data-id={{this._id}}>Save Article</button>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+
+</div>

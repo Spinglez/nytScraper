@@ -11,28 +11,21 @@ $(document).on('click', '#saveButton', function() {
   let link = $(selectedDiv).data('link');
   let summary = $(selectedDiv).find('p').text();
 
-  // $.ajax({
-  //   method: "POST",
-  //   url: '/articles',
-  //   data: {
-  //     title: title,
-  //     link: link,
-  //     summary: summary
-  //   }
-  // }).then(data => {
-  //   console.log('Sending:', data);
-  // });
+  $(this).addClass('invisible');
 
   $.post('/articles', {
     title: title,
     link: link,
     summary: summary
-  },function(data,status){
+  },(data,status) => {
     console.log('posting: ',data);
     console.log('status:', status);
   })
   .then((err) => {
     if (err) throw err;
-    console.log('Post completed!');
   });
 });
+
+$('#deleteButton').on('click', () =>{
+  console.log("delete button pressed");
+})
