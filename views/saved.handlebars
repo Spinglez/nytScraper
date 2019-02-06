@@ -25,13 +25,47 @@
           {{else}}
           <p>No available summary for article</p>
           {{/if}}
+          {{#if this.note}}
+          <p><b>{{this.note.title}}</b></p>
+          <p>{{this.note.body}}</p>
+          {{/if}}
         </div>
       </div>
       <div id="buttonDiv" class="col-1 mt-3 pb-2 mr-2">
-        <button id="addNote" type="button" name="addAnote" data-id={{this._id}}>Add a note</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#noteModal">Add a note</button>
+        {{!-- <button id="addNote" type="button" name="addAnote" data-id={{this._id}}>Add a note</button> --}}
+        {{!-- testing modal functionality inside the article each, I have a feeling this is going to be ugly. --}}
+        <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="noteModalLabel">Add a note!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="noteTitle" class="col-form-label">Title your Note:</label>
+                    <input type="text" class="form-control" id="noteTitle">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Note text:</label>
+                    <textarea class="form-control" id="messageText"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="saveNote" data-id="{{this._id}}" type="button" class="btn btn-primary">Save Note</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
   {{/each}}
-
 </div>

@@ -36,3 +36,18 @@ $('#deleteButton').on('click', () =>{
     }
   })
 })
+
+$('#saveNote').on('click', function() {
+  console.log('button clicked', $(this).data('id'));
+  console.log($('#noteTitle').val());
+  console.log($('#messageText').val());
+})
+// $('#noteModal').on('show.bs.modal'), function(event) {
+//   console.log('executing');
+//   var button = $(event.relatedTarget)
+//   var articleId = button.data('article')
+//   console.log(articleId);
+//   var modal = $(this)
+//   modal.find('#noteTitle').text("testing", aritcleId);
+//   modal.find('#saveNote').data('data-id', aritcleId);
+// }
