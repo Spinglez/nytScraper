@@ -28,4 +28,11 @@ $(document).on('click', '#saveButton', function() {
 
 $('#deleteButton').on('click', () =>{
   console.log("delete button pressed");
+  $.ajax({
+    url: '/articles',
+    type: 'DELETE',
+    success: function(result) {
+      console.log('Action:', result);
+    }
+  })
 })
