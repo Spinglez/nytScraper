@@ -18,7 +18,7 @@ $(document).on('click', '#saveButton', function() {
     link: link,
     summary: summary
   },(data,status) => {
-    console.log('posting: ',data);
+    console.log('posting:',data);
     console.log('status:', status);
   })
   .then((err) => {
@@ -41,7 +41,23 @@ $('#saveNote').on('click', function() {
   console.log('button clicked', $(this).data('id'));
   console.log($('#noteTitle').val());
   console.log($('#messageText').val());
+  let articleId = $(this).data('id');
+  let title = $('#noteTitle').val();
+  let body = $('#messageText').val()
+
+  $.post('/notes', {
+    articleId: articleId,
+    title: title,
+    body: body
+  },(data, status) => {
+    console.log('posting:', data);
+    console.log('status:', status);
+  })
+  .then((err) =>{
+    if (err) throw err;
+  });
 })
+
 // $('#noteModal').on('show.bs.modal'), function(event) {
 //   console.log('executing');
 //   var button = $(event.relatedTarget)

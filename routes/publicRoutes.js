@@ -41,7 +41,7 @@ module.exports = app => {
 
   app.get("/saved", (req, res) => {
     console.log("sending");
-    db.Article.find({}).then(dbArticle => {
+    db.Article.find({}).populate('notes').then(dbArticle => {
       let article = dbArticle;
       console.log(article);
       res.render("saved", {

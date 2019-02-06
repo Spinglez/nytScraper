@@ -5,29 +5,34 @@ module.exports = (app) => {
   app.post('/articles', (req, res) =>{
     // // console.log(scraper());
     console.log(req.body.title);
-    // let title = req.body
-    // console.log(db.Article.find({title: req.body.title}));
-    // if (req.body.title == db.Article.find({title: req.body.title})) {
-    //     res.send(alert('article is already saved'));
-    //     return;
-    // }
-    // else{
     db.Article.create(req.body)
       .then(dbArticle => {
         res.json(dbArticle);
       });
-    // };
-    // console.log('test');
-    // res.send(scraper())
   });
 
-//   app.get('/saved'), (req,res) => {
-//       console.log('sending');
-//       db.Article.find({})
-//       .then(dbArticle => {
-//     console.log(dbArticle);
-//   });
-// }
+  app.post('/notes', (req,res) => {
+
+    // let title = req.body.title;
+    // let body = req.body.body;
+    // let articleId = req.body.articleId;
+    // console.log('logging the body:', articleId,title,body);
+    db.Note.create(req.body)
+    .then(function(dbNote){
+      console.log('its showing object id here: ',dbNote.articleId);
+      return db.Article.findOneAndUpdate({_id: dbNote.articleId}, {$push: { notes: dbNote._id}}, {new: true});
+      console.log('Is this posting here?',dbNote);
+    })
+    // .then(function(dbUser){
+    //   console.log(dbUser);
+    //   res.json(dbUser);
+    // })
+    .catch((err) =>{
+      console.error(err);
+      res.json(err);
+    });
+  });
+
   app.delete('/articles', (req,res) =>{
     db.Article.remove({})
       .then(dbArticle =>{
@@ -35,7 +40,15 @@ module.exports = (app) => {
       })
   });
 
-  app.post('/articles:id'), (req,res) => {
-    console.log(req.params);
-  }
+  app.get('/articles', (req,res) => {
+    db.Article.find({}).populate('notes').then((dbNote)=>{
+      res.json(dbNote);
+    });
+  });
+
+  app.get('/notes', (req,res) => {
+    db.Note.find({}).then((dbNote) =>{
+      res.json(dbNote);
+    });
+  });
 }
