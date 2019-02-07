@@ -16,7 +16,7 @@
 <div class="container">
   {{#each article}}
   <div class="container">
-    <div class="row" id='articleId{{this._id}}'>
+    <div class="row" id='articleId'data-article="{{this._id}}">
       <div class="col" id='link-col' data-link="{{this.link}}">
         <a href={{this.link}} target="_blank"><h4>{{this.title}}</h4></a>
         <div class="col">
@@ -27,7 +27,9 @@
           {{/if}}
           {{#if this.notes}}
           <p><b>{{this.notes.title}}</b></p>
-          <p>{{this.notes.body}}</p>
+          <p class="bg-info text-light">{{this.notes.body}}</p>
+          {{else}}
+          <p>No Notes Saved, add one!</p>
           {{/if}}
         </div>
       </div>
